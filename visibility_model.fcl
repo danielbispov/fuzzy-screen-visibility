@@ -22,7 +22,7 @@ FUZZIFY screen_brightness
 END_FUZZIFY
 
 DEFUZZIFY visibility
-    TERM poor := (0, 1) (3.5, 0) ;
+    TERM dark := (0, 1) (3.5, 0) ;
     TERM good := (3, 0) (5, 1) (6, 1) (8.5, 0);
     TERM too_bright := (8, 0) (9, 1) ;
     METHOD : COG;
@@ -34,10 +34,11 @@ RULEBLOCK No1
     ACT : MIN;
     ACCU : MAX;
 
-    RULE 1 : IF ambient_light IS low AND screen_brightness IS low THEN visibility IS poor;
+    RULE 1 : IF ambient_light IS low AND screen_brightness IS low THEN visibility IS dark;
     RULE 2 : IF ambient_light IS low AND screen_brightness IS medium THEN visibility IS good;
     RULE 3 : IF ambient_light IS medium AND screen_brightness IS medium THEN visibility IS good;
     RULE 4 : IF ambient_light IS medium AND screen_brightness IS high THEN visibility IS too_bright;
+    RULE 5 : IF ambient_light IS high AND screen_brightness IS high THEN visibility IS too_bright;
 END_RULEBLOCK
 
 END_FUNCTION_BLOCK
