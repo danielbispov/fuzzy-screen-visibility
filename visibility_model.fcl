@@ -10,21 +10,21 @@ VAR_OUTPUT
 END_VAR
 
 FUZZIFY ambient_light
-    TERM low := (0, 1) (4.5, 0) ;
-    TERM medium := (4, 0) (5, 1) (6, 1) (7, 0) ;
-    TERM high := (6.5, 0) (9, 1) ;
+    TERM low := (0, 1) (3.5, 0) ;
+    TERM medium := (1, 0) (4, 1) (5, 1) (6, 1) (9, 0) ;
+    TERM high := (6.5, 0) (10, 1) ;
 END_FUZZIFY
 
 FUZZIFY screen_brightness
-    TERM low := (0, 1)  (1, 0.5)  (2, 0) ;
-    TERM medium := (2, 0) (3, 0.5) (4, 1) (5, 1) (6, 1) (7, 0.5) (8, 0) ;
-    TERM high := (7, 0) (9, 1) ;
+    TERM low := (0, 1) (2, 0) ;
+    TERM medium := (2, 0) (4, 1) (5, 1) (6, 1) (8, 0) ;
+    TERM high := (8, 0) (10, 1) ;
 END_FUZZIFY
 
 DEFUZZIFY visibility
     TERM dark := (0, 1) (3.5, 0) ;
-    TERM good := (3, 0) (5, 1) (6, 1) (8.5, 0);
-    TERM too_bright := (8, 0) (9, 1) ;
+    TERM good := (2.5, 0) (4, 1) (5, 1) (6, 1) (7.5, 0) ;
+    TERM too_bright := (6.5, 0) (10, 1) ;
     METHOD : COG;
     DEFAULT := 0;
 END_DEFUZZIFY
